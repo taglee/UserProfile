@@ -73,10 +73,11 @@ export default {
         }
       }).then(res => {
         console.log(res);
-        if (res.data.data.type == 1) {
-          this.$message.error('请输入老师ID')
-        }
-        if (res.status == 200 && res.data.data.type == 0) {
+        // if (res.data.data.type == 1) {
+        //   this.$message.error('请输入老师ID')
+        // }
+        if (res.status == 200) {
+          this.$store.commit('SET_ROLEID', res.data.data.roles.id)
           window.sessionStorage.setItem('storeData', res.data.data.userId)
           //用路由跳转页面
           this.$router.push('/index')

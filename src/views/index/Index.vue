@@ -6,7 +6,7 @@
         <el-menu :default-active='this.$route.path'
                  class="el-menu-vertical-demo"
                  :router="true">
-          <el-menu-item index="/index/courseManage">
+          <!-- <el-menu-item index="/index/courseManage">
             <i class="el-icon-menu"></i>
             <span slot="title">课程管理</span>
           </el-menu-item>
@@ -14,7 +14,15 @@
           <el-menu-item index="/index/warning">
             <i class="el-icon-document"></i>
             <span slot="title">学生预警</span>
-          </el-menu-item>
+          </el-menu-item> -->
+          <template>
+            <el-menu-item v-for="menu in routes"
+                          :key="menu.name"
+                          :index="menu.path">
+              <i :class="menu.icon"></i>
+              <span slot="title">{{menu.name}}</span>
+            </el-menu-item>
+          </template>
         </el-menu>
       </el-aside>
       <el-main>
@@ -30,34 +38,22 @@ export default {
   name: 'Index',
   data () {
     return {
-      // firstId: '',
-      // isShow: true
+
     }
   },
-  // provide () {
-  //   return {
-  //     reload: this.reload
-  //   }
-  // },
+
   methods: {
-    //定义reload方法
-    // reload () {
-    //   this.isShow = false
-    //   this.$nextTick(() => {
-    //     this.isShow = true
-    //   })
-    // },
-    //接受子组件传的数据以后,赋值给data，然后在菜单中绑定data
-    // first (id) {
-    //   console.log('OOOOOO' + id);
-    //   this.firstId = id
-    // }
+
+  },
+  computed: {
+    routes () {
+      return this.$store.getters.menu
+    }
   },
   components: {
 
   },
   mounted () {
-    console.log(this.$route.path);
 
   }
 }

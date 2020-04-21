@@ -31,13 +31,6 @@ export default {
     change (id) {
       // console.log();
       this.$emit("callFather", id)
-      // this.$parent.menuSearch()
-      // this.$parent.menusearch(id)
-      // console.log(id);
-      // this.$emit('courseId', id)
-      // console.log(id, name);
-      // this.$router.push({ path: `/warning/${id}` });
-      // this.$store.dispatch("changeName", name)
     },
   },
   created () {
@@ -53,7 +46,6 @@ export default {
       this.value = res.data.data[0].courseId
       this.$emit("callFather", this.value)
       // console.log(this.menu_data);
-
       //传给父组件默认的第一个courseId
       // this.$emit('first', this.menu_data[0].courseId)
       //通过Vuex传给Warning组件默认的第一个courseName
